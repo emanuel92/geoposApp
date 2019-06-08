@@ -32,6 +32,7 @@
     <script type="text/javascript">
 
 	var map;
+	var vectorLayer;
 
 	 navigator.geolocation.getCurrentPosition(
 		function(position){
@@ -74,7 +75,7 @@
 
 
 	 function add_map_point(lat, lng) {
-		var vectorLayer = new ol.layer.Vector({
+		vectorLayer = new ol.layer.Vector({
 		source:new ol.source.Vector({
 		features: [new ol.Feature({
 		geometry: new ol.geom.Point(ol.proj.transform([parseFloat(lng), parseFloat(lat)], 'EPSG:4326', 'EPSG:3857')),
@@ -96,20 +97,11 @@
 			//layer.bindPopup('Hello');
 		});*/
 
-		clearMapV();
 
 		map.addLayer(vectorLayer);
 	}
 
 
-
-
-	     function clearMapV() {
-            features = [];
-            features.length = 0;
-            vectorLayer.destroyFeatures();
-            drawValues(); // call function to re-create markers
-        }
 
     </script>
 
