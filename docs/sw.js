@@ -13,9 +13,10 @@ self.addEventListener('install', (event) => {
     );
 });
 
-self.addEventListener('fetch', (event) => {
+self.addEventListener('fetch', function(event) {
     event.respondWith(
-        caches.open('geoPosApp')
-            .then(cache => cache.match(event.request))
+      fetch(event.request).catch(function() {
+        return caches.match(event.request);
+      })
     );
-});
+  });
