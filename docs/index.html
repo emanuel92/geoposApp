@@ -31,13 +31,14 @@
 
     <script type="text/javascript">
 
+	var map;
 
 	 navigator.geolocation.getCurrentPosition(
 		function(position){
 			document.getElementById('tdlat').innerHTML = position.coords.latitude;
 			document.getElementById('tdlon').innerHTML = position.coords.longitude;
 
-			var map = new ol.Map({
+			map = new ol.Map({
 				target: 'map',
 				layers: [
 				  new ol.layer.Tile({
