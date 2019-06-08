@@ -89,6 +89,12 @@
 		})
 		})
 		});
+
+		map.eachLayer(function(layer){
+			map.removeLayer(layer);
+			//layer.bindPopup('Hello');
+		});
+
 		map.addLayer(vectorLayer);
 	}
 
