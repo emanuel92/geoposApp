@@ -34,25 +34,24 @@
 
 	 navigator.geolocation.getCurrentPosition(
 		function(position){
-		// wenn Positionsbestimmung geklappt hat:
 			document.getElementById('tdlat').innerHTML = position.coords.latitude;
 			document.getElementById('tdlon').innerHTML = position.coords.longitude;
 
 
 
 
-		var map = new ol.Map({
-        target: 'map',
-        layers: [
-          new ol.layer.Tile({
-            source: new ol.source.OSM()
-          })
-        ],
-        view: new ol.View({
-          center: ol.proj.fromLonLat([position.coords.longitude, position.coords.latitude]),
-          zoom: 4
-        })
-      });
+			var map = new ol.Map({
+				target: 'map',
+				layers: [
+				  new ol.layer.Tile({
+					source: new ol.source.OSM()
+				  })
+				],
+				view: new ol.View({
+				  center: ol.proj.fromLonLat([position.coords.longitude, position.coords.latitude]),
+				  zoom: 15
+				})
+			});
 
 
 
