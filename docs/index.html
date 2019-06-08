@@ -96,12 +96,20 @@
 			//layer.bindPopup('Hello');
 		});*/
 
-		vectorLayer.clearMarkers();
+		clearMapV();
 
 		map.addLayer(vectorLayer);
 	}
 
 
+
+
+	     function clearMapV() {
+            features = [];
+            features.length = 0;
+            vectorLayer.destroyFeatures();
+            drawValues(); // call function to re-create markers
+        }
 
     </script>
 
