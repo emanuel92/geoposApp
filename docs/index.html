@@ -33,6 +33,7 @@
 
 	var map;
 	var vectorLayer;
+	var marker;
 
 	 navigator.geolocation.getCurrentPosition(
 		function(position){
@@ -66,16 +67,32 @@
 	var watchID = navigator.geolocation.watchPosition(function(position) {
 		//do_something(position.coords.latitude, position.coords.longitude);
 		//alert("changed!");
-		add_map_point(position.coords.latitude, position.coords.longitude);
+		add_map_point2(position.coords.latitude, position.coords.longitude);
 	});
 
 
+
+	function add_map_point2(lat, lng) {
+		marker = new ol.Feature({
+		  geometry: new ol.geom.Point(
+			ol.proj.fromLonLat([lng,lat])
+		  ),  // Cordinates of New York's Town Hal
+
+
+		});
+		var vectorSource = new ol.source.Vector({
+		  features: [marker]
+		});
+		var markerVectorLayer = new ol.layer.Vector({
+		  source: vectorSource,
+		});
+		map.addLayer(markerVectorLayer);
+	}
 
 
 
 
 	 function add_map_point(lat, lng) {
-		vectorLayer=null;
 		vectorLayer = new ol.layer.Vector({
 		source:new ol.source.Vector({
 		features: [new ol.Feature({
@@ -91,14 +108,6 @@
 		})
 		})
 		});
-
-		/*map.eachLayer(function(layer){
-			map.removeLayer(layer);
-			alert("remove layer");
-			//layer.bindPopup('Hello');
-		});*/
-
-
 		map.addLayer(vectorLayer);
 	}
 
