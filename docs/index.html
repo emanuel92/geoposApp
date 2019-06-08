@@ -75,6 +75,7 @@
 
 
 	 function add_map_point(lat, lng) {
+		vectorLayer=null;
 		vectorLayer = new ol.layer.Vector({
 		source:new ol.source.Vector({
 		features: [new ol.Feature({
