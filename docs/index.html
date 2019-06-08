@@ -31,9 +31,10 @@
 
     <script type="text/javascript">
 
-	var map;
+	/**var map;
 	var vectorLayer;
-	var marker;
+	var marker;*/
+	var feature;
 
 	 navigator.geolocation.getCurrentPosition(
 		function(position){
@@ -73,24 +74,22 @@
 
 
 	function add_map_point2(lat, lng) {
-		marker = new ol.Feature({
-		  geometry: new ol.geom.Point(
-			ol.proj.fromLonLat([lng,lat])
-		  ),  // Cordinates of New York's Town Hal
 
 
-		});
-		var vectorSource = new ol.source.Vector({
-		  features: [marker]
-		});
-		var markerVectorLayer = new ol.layer.Vector({
-		  source: vectorSource,
-		});
+		var vectorLayer = new OpenLayers.Layer.Vector("Overlay");
+    
+		feature = new OpenLayers.Feature.Vector(
+            new OpenLayers.Geometry.Point( lng, lat ).transform(epsg4326, projectTo),
+            {description:'This is the value of<br>the description attribute'} ,
+            {externalGraphic: 'https://upload.wikimedia.org/wikipedia/commons/e/ec/RedDot.svg', graphicHeight: 25, graphicWidth: 21, graphicXOffset:-12, graphicYOffset:-25  }
+        );
+ 
 
+		vectorLayer.removeFeatures( [ feature ] );
 
-		markerVectorLayer.removeFeatures( [ vectorSource ] );
+		vectorLayer.addFeatures(feature);
 
-		map.addLayer(markerVectorLayer);
+		map.addLayer(vectorLayer);
 	}
 
 
