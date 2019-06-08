@@ -76,10 +76,10 @@
 	function add_map_point2(lat, lng) {
 
 
-		var vectorLayer = new OpenLayers.Layer.Vector("Overlay");
+		var vectorLayer = new ol.Layer.Vector("Overlay");
     
-		feature = new OpenLayers.Feature.Vector(
-            new OpenLayers.Geometry.Point( lng, lat ).transform(epsg4326, projectTo),
+		feature = new ol.Feature.Vector(
+            new ol.Geometry.Point( lng, lat ).transform(epsg4326, projectTo),
             {description:'This is the value of<br>the description attribute'} ,
             {externalGraphic: 'https://upload.wikimedia.org/wikipedia/commons/e/ec/RedDot.svg', graphicHeight: 25, graphicWidth: 21, graphicXOffset:-12, graphicYOffset:-25  }
         );
