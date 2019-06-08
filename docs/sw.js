@@ -1,14 +1,13 @@
 self.addEventListener('install', (event) => {
     event.waitUntil(
-        caches.open('fxcalc-v1')
+        caches.open('geoPosApp')
             .then(cache => cache.addAll([
-                '/fx-calculator/',
+                '/geoposApp/',
                 'index.html',
                 'style.css',
                 'app.js',
                 'icon512.png',
                 'icon16.png',
-                'rates.json',
                 'manifest.webmanifest'
             ]))
     );
@@ -16,7 +15,7 @@ self.addEventListener('install', (event) => {
 
 self.addEventListener('fetch', (event) => {
     event.respondWith(
-        caches.open('fxcalc-v1')
+        caches.open('geoPosApp')
             .then(cache => cache.match(event.request))
     );
 });

@@ -1,12 +1,12 @@
 {
-    "name": "Fx Calculator",
-    "short_name": "Fx Calc",
+    "name": "Geo Positioning App",
+    "short_name": "GeoPos",
     "display": "standalone",
     "start_url": ".",
-    "scope": "/fx-calculator/",
+    "scope": "/geoposApp/",
     "background_color": "#cfc",
     "theme_color": "#cfc",
-    "description": "Simple Fx Calculator based on fixer.io API",
+    "description": "Simple Geo Positioning App",
     "icons": [
         {
             "src": "icon512.png",
