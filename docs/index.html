@@ -37,9 +37,6 @@
 			document.getElementById('tdlat').innerHTML = position.coords.latitude;
 			document.getElementById('tdlon').innerHTML = position.coords.longitude;
 
-
-
-
 			var map = new ol.Map({
 				target: 'map',
 				layers: [
@@ -49,11 +46,9 @@
 				],
 				view: new ol.View({
 				  center: ol.proj.fromLonLat([position.coords.longitude, position.coords.latitude]),
-				  zoom: 15
+				  zoom: 16
 				})
 			});
-
-
 
 
 		},
@@ -62,6 +57,15 @@
 			document.getElementById('err').innerHTML ='Die Position konnte nicht ermittelt werden';
 		}
 	)
+
+
+
+	//Listener
+	var watchID = navigator.geolocation.watchPosition(function(position) {
+		//do_something(position.coords.latitude, position.coords.longitude);
+		alert("changed!");
+	});
+
 
 
 
