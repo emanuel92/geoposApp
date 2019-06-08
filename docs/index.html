@@ -90,10 +90,13 @@
 		})
 		});
 
-		map.eachLayer(function(layer){
+		/*map.eachLayer(function(layer){
 			map.removeLayer(layer);
+			alert("remove layer");
 			//layer.bindPopup('Hello');
-		});
+		});*/
+
+		vectorLayer.clearMarkers();
 
 		map.addLayer(vectorLayer);
 	}
