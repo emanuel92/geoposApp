@@ -26,13 +26,22 @@
 
 	<div id="tdlat"> tdlat</div>
 	<div id="tdlon"> tdlon</div>
-	<div id="tdalt"> tdalt</div>
-	<div id="tdacc"> tdacc</div>
-	<div id="err"> error</div>
+	<div id="err"> no error</div>
 
 
     <script type="text/javascript">
-      var map = new ol.Map({
+
+
+	 navigator.geolocation.getCurrentPosition(
+		function(position){
+		// wenn Positionsbestimmung geklappt hat:
+			document.getElementById('tdlat').innerHTML = position.coords.latitude;
+			document.getElementById('tdlon').innerHTML = position.coords.longitude;
+
+
+
+
+		var map = new ol.Map({
         target: 'map',
         layers: [
           new ol.layer.Tile({
@@ -40,22 +49,14 @@
           })
         ],
         view: new ol.View({
-          center: ol.proj.fromLonLat([37.41, 8.82]),
+          center: ol.proj.fromLonLat([position.coords.longitude, position.coords.latitude]),
           zoom: 4
         })
       });
 
 
 
-	  //****************************
 
-	 navigator.geolocation.getCurrentPosition(
-		function(position){
-		// wenn Positionsbestimmung geklappt hat:
-			document.getElementById('tdlat').innerHTML = position.coords.latitude;
-			document.getElementById('tdlon').innerHTML = position.coords.longitude;
-			document.getElementById('tdalt').innerHTML = position.coords.altitude+'m';
-			document.getElementById('tdacc').innerHTML = position.coords.accuracy+'m';
 		},
 		function(){
 			// wenn Positionsbestimmung einen Fehler erzeugt hat (z.B. weil Sie vom User ablehnt wurde).
